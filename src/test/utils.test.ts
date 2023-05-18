@@ -1,8 +1,15 @@
 import {toUpperCase} from "../app/utils";
 
 describe('Utils tests', () => {
-    test('should return uppercase', () => {
-        const result = toUpperCase('abc');
-        expect(result).toBe('ABC')
+    it('should return uppercase of valid test', () => {
+        // arrange
+        const sut = toUpperCase;
+        const expected = 'ABC';
+
+        // act
+        const actual = sut('abc');
+
+        // assert
+        expect(actual).toBe(expected)
     })
 })
