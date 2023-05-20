@@ -11,29 +11,43 @@ describe('Utils tests', () => {
 
         // assert
         expect(actual).toBe(expected)
-    })
+    });
 
-    it.only('should return info about valid string', () => {
-        const sut = getStringInfo;
+    describe('getStringInfo for arg My String should', () => {
+        test('return right upper case', () => {
+            const actual = getStringInfo('My String');
+            expect(actual.upperCase).toBe('MY STRING');
+        });
+        test('return right lower case', () => {
+            const actual = getStringInfo('My String');
+            expect(actual.lowerCase).toBe('my string');
+        });
+        test('return right length', () => {
+            const actual = getStringInfo('My String');
+            expect(actual.characters.length).toBe(9);
+            expect(actual.characters).toHaveLength(9);
+        });
 
-        const actual = sut('My string');
 
-        expect(actual.lowerCase).toBe('my string');
-        expect(actual.info).toEqual({});
+        test('return right characters', ()=>{
+            const actual = getStringInfo('My String');
+            expect(actual.characters).toEqual(['M', 'y', ' ','S', 't', 'r','i', 'n', 'g']);
+            expect(actual.characters).toContain<string>('M');
+            expect(actual.characters).toEqual(
+                expect.arrayContaining(['S', 't', 'r','i', 'n', 'g', 'M', 'y', ' '])
+            );
+        });
+        test('return defined extra info', ()=>{
+            const actual = getStringInfo('My String');
+            expect(actual.info).not.toBe(undefined);
+            expect(actual.info).not.toBeUndefined();
+            expect(actual.info).toBeDefined();
+            expect(actual.info).toBeTruthy();
+        });
 
-        expect(actual.characters.length).toBe(9);
-        expect(actual.characters).toHaveLength(9);
-        expect(actual.characters).toEqual(['M', 'y', ' ', 's', 't', 'r', 'i', 'n', 'g']);
-        expect(actual.characters).toContain<string>('M');
-        expect(actual.characters).toEqual<string>(
-            expect.arrayContaining(['s', 't', 'r', 'i','M', 'y', ' ','n', 'g'])
-        );
-
-        expect(actual.info).not.toBe(undefined);
-        expect(actual.info).not.toBeUndefined();
-        expect(actual.info).toBeDefined();
-        expect(actual.info).toBeTruthy();
-
-    })
-
+        test('return right extra info', ()=>{
+            const actual = getStringInfo('My String');
+            expect(actual.info).toEqual({})
+        });
+    });
 })
