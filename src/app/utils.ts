@@ -6,6 +6,10 @@ export type StringInfo = {
     info?: object;
 }
 
+export class StringUtils {
+    public  toUpperCase = (args: string): string => args.toUpperCase();
+}
+
 export const toUpperCase = (args: string): string => args.toUpperCase();
 
 
