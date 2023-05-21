@@ -7,7 +7,12 @@ export type StringInfo = {
 }
 
 export class StringUtils {
-    public  toUpperCase = (args: string): string => args.toUpperCase();
+    public  toUpperCase = (args: string): string => {
+        if (!args) {
+            throw new Error('Invalid argument XXX')
+        }
+       return args.toUpperCase();
+    }
 }
 
 export const toUpperCase = (args: string): string => args.toUpperCase();

@@ -21,27 +21,64 @@ describe('Utils tests', () => {
             console.log('Setup');
         });
 
-        afterEach(()=>{
+        afterEach(() => {
             // clearing mocks
             console.log('Teardown');
         });
 
         const expected = 'ABC';
 
-        it('Should return correct upperCase', ()=>{
+        it('1. Should return correct upperCase', () => {
             const actual = sut.toUpperCase('abc');
 
             expect(actual).toBe(expected);
             console.log('Actual test')
-        })
+        });
+
+        it('2. Should throw error on invalid arg - function', () => {
+            function expectError() {
+                const actual = sut.toUpperCase('');
+            }
+
+            expect(expectError).toThrow('Invalid argument XXX');
+            expect(expectError).toThrowError('Invalid argument YYY');
+        });
+
+        it('3. Should throw error on invalid arg - arrow function', () => {
+            const arrowFnExpectError = () => {
+                sut.toUpperCase('');
+            };
+
+            expect(arrowFnExpectError).toThrow('Invalid argument YYY');
+            expect(arrowFnExpectError).toThrowError(Error('Invalid argument XXX'));
+        });
+
+        it('4. Should throw error on invalid arg - anonymous arrow function', () => {
+            const expected = 'Invalid argument';
+            expect(() => sut.toUpperCase('')).toThrow(expected);
+            expect(() => sut.toUpperCase('')).toThrowError(Error(expected));
+        });
+
+        it('5. Should throw error on invalid arg - try catch', (done) => {
+
+            try {
+                sut.toUpperCase('');
+                done('should throw error');
+            } catch (error) {
+                expect(error).toBeInstanceOf(Error);
+                expect(error).toHaveProperty('message', 'Invalid argument YYY');
+                done();
+            }
+        });
+
     })
 
-    describe('Parametrized tests | ToUpperCase examples', ()=>{
+    describe('Parametrized tests | ToUpperCase examples', () => {
         it.each([
-            {input:'xyz', expected: 'XYZ'},
-            {input:'My String', expected: 'MY STRING'},
-            {input:'roman', expected: 'ROMAN'}
-        ])('$input toUpperCase should be $expected', ({input, expected})=>{
+            {input: 'xyz', expected: 'XYZ'},
+            {input: 'My String', expected: 'MY STRING'},
+            {input: 'roman', expected: 'ROMAN'}
+        ])('$input toUpperCase should be $expected', ({input, expected}) => {
             const actual = toUpperCase(input);
             expect(actual).toBe(expected);
         });
@@ -63,15 +100,15 @@ describe('Utils tests', () => {
         });
 
 
-        test('return right characters', ()=>{
+        test('return right characters', () => {
             const actual = getStringInfo('My String');
-            expect(actual.characters).toEqual(['M', 'y', ' ','S', 't', 'r','i', 'n', 'g']);
+            expect(actual.characters).toEqual(['M', 'y', ' ', 'S', 't', 'r', 'i', 'n', 'g']);
             expect(actual.characters).toContain<string>('M');
             expect(actual.characters).toEqual(
-                expect.arrayContaining(['S', 't', 'r','i', 'n', 'g', 'M', 'y', ' '])
+                expect.arrayContaining(['S', 't', 'r', 'i', 'n', 'g', 'M', 'y', ' '])
             );
         });
-        test('return defined extra info', ()=>{
+        test('return defined extra info', () => {
             const actual = getStringInfo('My String');
             expect(actual.info).not.toBe(undefined);
             expect(actual.info).not.toBeUndefined();
@@ -79,9 +116,10 @@ describe('Utils tests', () => {
             expect(actual.info).toBeTruthy();
         });
 
-        test('return right extra info', ()=>{
+        test('return right extra info', () => {
             const actual = getStringInfo('My String');
             expect(actual.info).toEqual({})
         });
     });
+
 })
