@@ -71,6 +71,8 @@ describe('Utils tests', () => {
             }
         });
 
+        it.todo('Test long string')
+
     })
 
     describe('Parametrized tests | ToUpperCase examples', () => {
