@@ -1,8 +1,8 @@
 import { IncomingMessage, ServerResponse } from "http";
-import { Authorizer } from "../auth/Authorizer";
-import { Account } from "../model/AuthModel";
-import { HTTP_CODES, HTTP_METHODS } from "../model/ServerModel";
-import { getRequestBody } from "../utils/Utils";
+import { Authorizer } from "../auth/authorizer";
+import { Account } from "../model/auth-model";
+import { HTTP_CODES, HTTP_METHODS } from "../model/server-model";
+import { getRequestBody } from "../utils/utils";
 
 
 

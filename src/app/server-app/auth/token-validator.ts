@@ -1,6 +1,6 @@
 
 
-export interface ITokenValidator {
+export type TokenValidator = {
 
     validateToken(tokenId: string): Promise<boolean>
 

@@ -1,10 +1,10 @@
-import { SessionTokenDataAccess } from "../data/SessionTokenDataAccess";
-import { UserCredentialsDataAccess } from "../data/UserCredentialsDataAccess";
-import { ITokenValidator } from "./ITokenValidator";
-import { IUsersHandler } from "./IUsersHandler";
+import { SessionTokenDataAccess } from "../data/session-token-data-access";
+import { UserCredentialsDataAccess } from "../data/user-credentials-data-access";
+import { TokenValidator } from "./token-validator";
+import { UsersHandler } from "./users-handler";
 
 
-export class Authorizer implements IUsersHandler, ITokenValidator {
+export class Authorizer implements UsersHandler, TokenValidator {
 
     private sessionTokenDataAccess = new SessionTokenDataAccess();
     private userCredentialsDataAccess = new UserCredentialsDataAccess();

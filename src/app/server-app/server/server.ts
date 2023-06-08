@@ -1,10 +1,10 @@
 import { createServer, IncomingMessage, Server as NodeServer, ServerResponse } from 'http'
-import { Authorizer } from '../auth/Authorizer';
-import { ReservationsDataAccess } from '../data/ReservationsDataAccess';
-import { LoginHandler } from '../handlers/LoginHandler';
-import { RegisterHandler } from '../handlers/RegisterHandler';
-import { ReservationsHandler } from '../handlers/ReservationsHandler';
-import { HTTP_CODES } from '../model/ServerModel';
+import { Authorizer } from '../auth/authorizer';
+import { ReservationsDataAccess } from '../data/reservations-data-access';
+import { LoginHandler } from '../handlers/login-handler';
+import { RegisterHandler } from '../handlers/register-handler';
+import { ReservationsHandler } from '../handlers/reservations-handler';
+import { HTTP_CODES } from '../model/server-model';
 
 export class Server {
 

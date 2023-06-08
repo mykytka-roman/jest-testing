@@ -1,6 +1,6 @@
-import { generateRandomId } from "./IdGenerator";
+import { generateRandomId } from "./id-generator";
 
-type ObjectWithId = {
+export type ObjectWithId = {
     id: string
 }
 
