@@ -1,5 +1,5 @@
-import { Account } from "../model/AuthModel";
-import { DataBase } from "./DataBase";
+import { Account } from "../model/auth-model";
+import { DataBase } from "./data-base";
 
 export class UserCredentialsDataAccess {
 

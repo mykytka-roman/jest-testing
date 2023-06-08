@@ -1,9 +1,9 @@
 import { IncomingMessage, ServerResponse } from "http";
-import { Authorizer } from "../auth/Authorizer";
-import { ReservationsDataAccess } from "../data/ReservationsDataAccess";
-import { Reservation } from "../model/ReservationModel";
-import { HTTP_CODES, HTTP_METHODS } from "../model/ServerModel";
-import { getRequestBody } from "../utils/Utils";
+import { Authorizer } from "../auth/authorizer";
+import { ReservationsDataAccess } from "../data/reservations-data-access";
+import { Reservation } from "../model/reservation-model";
+import { HTTP_CODES, HTTP_METHODS } from "../model/server-model";
+import { getRequestBody } from "../utils/utils";
 
 
 
